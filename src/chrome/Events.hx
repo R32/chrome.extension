@@ -1,17 +1,31 @@
 package chrome;
 
+
 @:require(chrome)
 typedef Rule = {
+
 	@:optional var id : String;
+	
+	
 	@:optional var tags : Array<String>;
+	
 	var conditions : Array<Dynamic>;
+	
 	@:optional var actions : Array<Dynamic>;
+	
+	/**
+	优先级从大到小的顺序执行, 默认为 100,  
+	*/
 	@:optional var priority : Int;
 }
 
+/**
+http://chajian.baidu.com/developer/extensions/events.html 
+*/
 @:require(chrome)
-typedef Event<T> = {
-	function addListener( callback : T ) : Void;
+extern class Event<T> {
+	@:overload(function(callback: T, webReqfilter:chrome.WebRequest.RequestFilter, ?extraInfoSpec:Array<String>):Void { } )
+	function addListener( callback : T, ?urlFilter:UrlFilter ) : Void;
 	function removeListener( f : T ) : Void;
 	function hasListener( f : T ) : Bool;
 	function hasListeners( f : T ) : Bool;

@@ -11,6 +11,19 @@ import chrome.Tabs;
 	var separator = "separator";
 }
 
+/**
+菜单项将会出现在哪些上下文中, 默认为 page
+
+ - all: 全部, 不包括 app 加载页面.
+ - page: 页面
+ - frame: 框架
+ - selection: 选定内容
+ - link: 链接
+ - editable: 可编辑区域
+ - image: 图片
+ - video: 视频
+ - audio: 音频
+*/
 @:enum abstract ContextType(String) from String to String {
 	var all = "all";
 	var page = "page";
@@ -24,6 +37,13 @@ import chrome.Tabs;
 	var launcher = "launcher";
 }
 
+/**
+[右键菜单](http://chajian.baidu.com/developer/extensions/contextMenus.html)
+
+可用版本: chrome 6+
+
+权限: "contextMenus"
+*/
 @:require(chrome)
 @:native("chrome.contextMenus")
 extern class ContextMenus {
@@ -56,7 +76,10 @@ extern class ContextMenus {
 			?enabled : Bool
 		},
 		?callback : Void->Void ) : Void;
-
+	
+	/**
+	更新以前创建的菜单项 
+	*/
 	static function update(
 		id : EitherType<Int,String>,
 		updateProperties : {

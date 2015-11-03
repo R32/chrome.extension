@@ -26,6 +26,23 @@ import chrome.History;
 	var from_address_bar = "from_address_bar";
 }
 
+/**
+实时地接收有关导航请求状态的通知, [中文文档](http://chajian.baidu.com/developer/extensions/webNavigation.html)
+
+可用版本: Chrome 16+
+
+权限: "webNavigation"
+
+#### 事件顺序
+
+对于一次成功完成的导航，事件按照如下顺序产生：
+
+```
+onBeforeNavigate -> onCommitted -> onDOMContentLoaded -> onCompleted
+```
+
+在这一过程中如果发生任何错误都将产生 onErrorOccurred 事件。对于一次导航，在 onErrorOccurred 之后不会再产生进一步的事件。
+*/
 @:require(chrome_ext)
 @:native("chrome.webNavigation")
 extern class WebNavigation {

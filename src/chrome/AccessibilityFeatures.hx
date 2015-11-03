@@ -2,6 +2,13 @@ package chrome;
 
 import chrome.Types;
 
+/**
+管理 Chrome 浏览器的辅助功能
+
+可用版本: chrome 37+, 警告: 目前为 Beta 分支
+
+权限: "accessibilityFeatures.read","accessibilityFeatures.modify"
+*/
 @:require(chrome)
 @:native("chrome.accessibilityFeatures")
 extern class AcessibilityFeatures {
