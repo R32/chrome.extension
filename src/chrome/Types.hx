@@ -45,19 +45,19 @@ http://chajian.baidu.com/developer/extensions/types.html
 */
 @:require(chrome)
 @:native("chrome.types.chromeSetting")
-extern class ChromeSetting {
+extern class ChromeSetting<T> {
 	/**
 	获得设置的值
 	
 	details: 
 	 - incognito: 返回是否用于隐身会话的值（默认为 false）
 	*/	
-	function get( details : {?incognito:Bool}, callback : {value:Dynamic,levelOfControl:LevelOfControl,?incognitoSpecific:Bool}->Void ) : Void;
+	function get( details : {?incognito:Bool}, callback : {value:T,levelOfControl:LevelOfControl,?incognitoSpecific:Bool}->Void ) : Void;
 	
 	/**
 	修改设置的值 
 	*/
-	function set( details : { value:Dynamic, ?scope:ChromeSettingScope }, ?callback : Void->Void ) : Void;
+	function set( details : { value:T, ?scope:ChromeSettingScope }, ?callback : Void->Void ) : Void;
 	
 	/**
 	清除设置，恢复默认值 
@@ -67,5 +67,5 @@ extern class ChromeSetting {
 	/**
 	设置更改后产生 
 	*/
-	var onChange : Event<{value:Dynamic,levelOfControl:LevelOfControl,?incognitoSpecific:Bool}->Void>;
+	var onChange : Event<{value:T,levelOfControl:LevelOfControl,?incognitoSpecific:Bool}->Void>;
 }

@@ -122,7 +122,7 @@ http://chajian.baidu.com/developer/extensions/proxy.html
 @:native("chrome.proxy")
 extern class Proxy {
 
-	static var settings(default,never) : ChromeSetting;
+	static var settings(default,never) : ChromeSetting<ProxyConfig>;
 
 	/**
 	 - fatal: 如果为 true，该错误是致命的，网络连接将终止。否则，将改用直接连接
