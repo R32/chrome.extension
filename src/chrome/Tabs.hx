@@ -207,7 +207,7 @@ extern class Tabs {
 	 - pinned: 标签页是否应该固定，默认为 false。
 	 - openerTabId: 打开这一标签页的标签页标识符。如果指定的话，该标签页必须与新创建的标签页在同一个窗口中。
 	*/
-	static function create( createProperties : {?windowId:Int,?index:Int,?url:String,?active:Bool,?pinned:Bool,openerTabId:Int}, callback : Tab->Void ) : Void;
+	static function create( createProperties : {?windowId:Int,?index:Int,?url:String,?active:Bool,?pinned:Bool, ?openerTabId:Int}, callback : Tab->Void ) : Void;
 	
 	/**
 	复制标签页。
@@ -234,7 +234,7 @@ extern class Tabs {
 	 - windowType: 标签页所在窗口的类型。enum of {"normal", "popup", "panel", or "app"}
 	 - index: 标签页在窗口中的位置。
 	*/
-	static function query( queryInfo : {?active:Bool,?pinned:Bool,?audible:Bool,?muted:Bool,?highlighted:Bool,?lastFocusedWindow:Bool,?currentWindow:Bool,?status:TabStatus,?title:String,?url:String,?windowId:Int,windowType:WindowType,?index:Int}, callback : Array<Tab>->Void ) : Void;
+	static function query( queryInfo : {?active:Bool,?pinned:Bool,?audible:Bool,?muted:Bool,?highlighted:Bool,?lastFocusedWindow:Bool,?currentWindow:Bool,?status:TabStatus,?title:String,?url:String,?windowId:Int,?windowType:WindowType,?index:Int}, callback : Array<Tab>->Void ) : Void;
 	
 	/**
 	同时选中多个"标签页", 在 chrome 中, 用户可以按住 shift或Ctrol 点击选中多个 标签页面,然后右键执行多个操作.

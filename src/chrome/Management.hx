@@ -189,15 +189,31 @@ extern class Management {
 	static function uninstallSelf( ?options : { ?showConfirmDialog : Bool }, ?callback : Void->Void ) : Void;
 	
 	/**
-	
+	运行一个应用(仅限于App)。
 	*/
-	// TODO: 几个方法暂时无文档, (没法翻墙)
 	static function launchApp( id : String, ?callback : Void->Void ) : Void;
+	
 	static function createAppShortcut( id : String, ?callback : Void->Void ) : Void;
 	static function setLaunchType( id : String, launchType : LaunchType, ?callback : Void->Void ) : Void;
 	static function generateAppForLink( url : String, title : String, ?callback : ExtensionInfo->Void ) : Void;
-	static var onInstalled(default,never) : Event<ExtensionInfo->Void>;
-	static var onUninstalled(default,never) : Event<String->Void>;
+	
+	/**
+	安装应用或扩展程序时产生。 
+	*/
+	static var onInstalled(default, never) : Event<ExtensionInfo->Void>;
+	
+	/**
+	应用或扩展程序卸载时产生。 
+	*/
+	static var onUninstalled(default, never) : Event<String->Void>;
+	
+	/**
+	应用或扩展程序启用时产生。 
+	*/
 	static var onEnabled(default,never) : Event<ExtensionInfo->Void>;
+	
+	/**
+	应用或扩展程序禁用时产生。 
+	*/
 	static var onDisabled(default,never) : Event<ExtensionInfo->Void>;
 }

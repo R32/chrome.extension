@@ -106,7 +106,7 @@ typedef ProxyConfig = {
 	*/
 	@:optional var pacScript : PacScript;
 	
-	var mode : PacScript;
+	var mode : ProxyConfigMode;
 }
 
 /**

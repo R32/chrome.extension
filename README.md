@@ -29,6 +29,8 @@ For packaged apps types see: https://github.com/tong/chrome.app
 ### zh_CN Progress
 
 如果可以翻qiang,推荐这个中文 API链接: https://crxdoc-zh.appspot.com/
+	
+[crxdoc 镜像](http://api.gjcq176.com/chromeplugin/api%20zh/extensions/api_index.html)
 
 备用中文API http://chajian.baidu.com/developer/extensions/api_index.html
 
@@ -83,14 +85,14 @@ For packaged apps types see: https://github.com/tong/chrome.app
  - [x] cookies 需要在 manifest 中限定网址
 
  - [ ] debugger (可以附加到一个或多个标签页，以便查看网络交互、调试 JavaScript、改变 DOM 和 CSS 等等。使用调试对象的标签页标识符来指定 sendCommand 的目标标签页，并在 onEvent 的回调函数中通过标签页标识符分发事件)
-
+ 
  - [x] declerativeContent 用于在何时显示 pageAction 按钮,或更改其图标
 
  - [ ] desktopCapture (用于捕获屏幕、单个窗口或标签页的内容)
 
  - [ ] documentScan
 
- - [ ] downloads (以编程方式开始下载，监视、操纵、搜索下载的文件。)
+ - [x] downloads 以编程方式开始下载，监视、操纵、搜索下载的文件
 
  - [x] extension 扩展的一些帮助方法
 
@@ -140,7 +142,7 @@ For packaged apps types see: https://github.com/tong/chrome.app
 
  - [x] runtime 运行时的一些方法(相对原(origin)项目一些方法改动很大)
 
- - [ ] sessions (查询和恢复浏览器会话中的标签页和窗口)
+ - [x] sessions 查询和恢复浏览器会话中的标签页和窗口(似乎没什么作用)
 
  - [ ] signedInDevices (获取以当前配置文件所对应的账户登录的设备列表)
 
@@ -165,6 +167,8 @@ For packaged apps types see: https://github.com/tong/chrome.app
  - [ ] webNavigation 实时地接收有关导航请求状态的通知
 
  - [x] webRequest 监控与分析流量，还可以实时地拦截、阻止或修改请求(部分,方法的回调函数返回值,及 addListener 的参数, 需要更改).
+
+	> **BETA(未添加到库)** , 使用 `chrome.declarativeWebRequest` 实时地拦截、阻止或者修改请求，它比 chrome.webRequest 要快得多，因为您注册的规则在浏览器而不是 JavaScript 引擎中求值，这样就减少了来回延迟并且可以获得极高的效率。
 
  - [x] webstore 在您的网站上“内嵌”安装应用与扩展程序。
 

@@ -154,11 +154,13 @@ extern class Runtime {
 	/**
 	检查应用是否有更新, TODO: 只用于 app, 而非 extension
 	*/
+	@:require(chrome_app)
 	static function requestUpdateCheck( callback : RequestUpdateCheckStatus->? { version:String }->Void ) : Void;
 	
 	/**
 	chrome 32+, 重新启动 Chrome OS 设备. 仅用于 ChromeOS kiosk 模式 
 	*/
+	@:require(chrome_os)
 	static function restart() : Void;
 	
 	/**
@@ -217,6 +219,7 @@ extern class Runtime {
 	/**
 	only app. 在事件页面即将卸载前发送，这样应用就有机会进行清理。注意，由于页面即将卸载，处理该事件时开始的任何异步操作都不能保证完成。如果卸载前事件页面产生了更多活动，将产生 onSuspendCanceled 事件，并且事件页面不会卸载。 
 	*/
+	@:require(chrome_app)
 	static var onSuspend(default,never) : Event<Void->Void>;
 	
 	/**
@@ -246,5 +249,6 @@ extern class Runtime {
 	/**
 	chrome 29+app, 应用或者运行它的设备需要重新启动时产生，应用应该尽早关闭所有窗口，以便开始重新启动。如果应用什么都不做，超过 24 小时的宽限期后会强制重新启动。目前，只有 Chrome OS 的 Kiosk 应用会产生该事件。 
 	*/
+	@:require(chrome_os)
 	static var onRestartRequired(default,never) : Event<OnRestartRequiredReason->Void>;
 }

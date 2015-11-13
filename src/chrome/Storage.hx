@@ -1,7 +1,7 @@
 package chrome;
 
 import chrome.Events;
-
+import haxe.extern.EitherType;
 typedef StorageChange = {
 	@:optional var oldValue : Dynamic;
 	@:optional var newValue : Dynamic;
@@ -11,14 +11,14 @@ typedef StorageArea = {
 	/**
 	从存储中获得一个或多个值。
 	
-	key: 要获得的单个键、多个键的列表或者指定默认值的词典（参见对象的描述），空的列表或对象将会返回空的结果对象。要获得存储的所有内容，请传递 null。 
+	key: String|Array<String>|Obj 要获得的单个键、多个键的列表或者指定默认值的词典（参见对象的描述），空的列表或对象将会返回空的结果对象。要获得存储的所有内容，请传递 null。 
+	 - 当指定为 Obj 时, 其实只取 Obj 的 key 值,忽略对应的 value
 	
 	callback: 包含存储项目或者表示失败（这种情况下会设置 runtime.lastError）的回调函数。
 	 - items: 包含按键-值映射的项目对象。
 	*/
-	@:overload(function( ?keys : Dynamic, ?callback : Dynamic->Void ):Void{})
-	@:overload(function( ?keys : String, ?callback : Dynamic->Void ):Void{})
-	function get( ?keys : Array<String>, ?callback : Dynamic->Void ) : Void;
+	@:overload(function(callback : Dynamic->Void ):Void{})
+	function get(keys: Dynamic, ?callback : Dynamic->Void ) : Void;
 	
 	/**
 	获得一个或多个项目正在使用的空间大小（以字节为单位）。
@@ -28,8 +28,10 @@ typedef StorageArea = {
 	callback: 回调函数，将传递存储占用的空间大小，或者指示失败（这种情况下将会设置 runtime.lastError）
 	 - byteInUse: 正在使用的存储空间大小，以字节为单位。
 	*/
-	@:overload(function( ?keys : Array<String>, callback : Int->Void ):Void{})
-	function getBytesInUse( ?keys : String, callback : Int->Void ) : Void;
+	
+	@:overload(function(callback : Int->Void ):Void{})
+	@:overload(function( keys : Array<String>, callback : Int->Void ):Void{})
+	function getBytesInUse( keys : String, callback : Int->Void ) : Void;
 	
 	/**
 	设置多个项目。 
@@ -45,7 +47,7 @@ typedef StorageArea = {
 	/**
 	从存储中移除一个或多个项目。 
 	*/
-	@:overload(function( ?keys : Array<String>, ?callback : Void->Void ):Void{})
+	@:overload(function( keys : Array<String>, ?callback : Void->Void ):Void{})
 	function remove( keys : String, ?callback : Void->Void ) : Void;
 	
 	/**
