@@ -32,7 +32,9 @@ For packaged apps types see: https://github.com/tong/chrome.app
 	
 [crxdoc 镜像](http://api.gjcq176.com/chromeplugin/api%20zh/extensions/api_index.html)
 
-备用中文API http://chajian.baidu.com/developer/extensions/api_index.html
+备用中文API <http://chajian.baidu.com/developer/extensions/api_index.html>
+
+调试chrome: <chrome://net-internals/>, 比如选 Proxy
 
  * devtools 在扩展的manifest中指定 `devtools_page: "devtools.html"` 项
 
