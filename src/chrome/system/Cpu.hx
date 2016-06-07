@@ -1,19 +1,28 @@
 package chrome.system;
 
-/**
 usage: 使用情况
  - user: 用户空间的程序在该处理器上总共使用的时间
  - kernel: 内核程序在该处理器上总共使用的时间
  - idle: 该处理器空闲的总计时间
  - total: 该处理器累计使用时间，等于 user + kernel + idle。
 */
-private typedef Processor = {
+typedef Processor = {
 	var usage : {
 		user : Float,
 		kernel : Float,
 		idle : Float,
 		total : Float
 	};
+}
+
+@:enum abstract ProcessorFeature(String) from String to String {
+	var mmx = "mmx";
+	var sse = "sse";
+	var sse2 = "sse2";
+	var sse3 = "sse3";
+	var sse4_1 = "sse4_1";
+	var sse4_2 = "sse4_2";
+	var avx = "avx";
 }
 
 /**
@@ -31,9 +40,8 @@ extern class Cpu {
 	 - numOfProcessors: 逻辑处理器数目.
 	 - archName: 处理器的模型名称. e.g: "x86"
 	 - modelName: 处理器的模型名称 e.g: "AMD Athlon(tm) II X2 255 Processor"
-	 - features: 表示处理器能力的特性代号，目前支持的代号有 "mmx"、"sse"、"sse2"、"sse3"、"ssse3"、"sse4_1"、"sse4_2" 和 "avx"。
+	 - features: 表示处理器能力的特性代号
 	 - processors: 每个逻辑处理器的有关信息
 	*/
-	static function getInfo( callback : {numOfProcessors:Int,archName:String,modelName:String,features:Array<String>,processors:Array<Processor>}->Void ) : Void;
-
+	static function getInfo( callback : {numOfProcessors:Int,archName:String,modelName:String,features:Array<ProcessorFeature>,processors:Array<Processor>}->Void ) : Void;
 }
