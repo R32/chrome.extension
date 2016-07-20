@@ -51,12 +51,7 @@ typedef Tab = {
 	*/
 	var pinned : Bool;
 	
-	/**
-	 
-	*/
 	@:optional var audible : Bool;
-	//@:requires(chrome_dev)
-	//@:optional var mutedInfo : MutedInfo;
 	
 	/**
 	标签页中显示的 URL，只有当应用拥有 "tabs" 权限时该属性才会存在。 

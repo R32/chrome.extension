@@ -92,6 +92,7 @@ chrome.storage 并不像一辆大卡车那样，而是像一系列的管道，�
 
 [更多中文文档...](http://chajian.baidu.com/developer/extensions/storage.html)
 */
+@requiresChromePermissions("storage")
 @:require(chrome)
 @:native("chrome.storage")
 extern class Storage {
